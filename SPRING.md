@@ -1,3 +1,34 @@
+# Spring
+
+# Index
+
+1. [What is Spring Framework?](#what-is-spring-framework)
+    1. [Core Features](#core-features)
+        1. [IoC (Inversion of Control)](#ioc-inversion-of-control)
+        2. [AOP (Aspect Oriented Programming)](#aop-aspect-oriented-programming)
+        3. [DAF (Data Access Framework)](#daf-data-access-framework)
+        4. [MVC](#mvc)
+2. [What is a Spring Bean?](#what-is-a-spring-bean)
+3. [Annotations](#annotations)
+4. [Dependency Injection](#dependency-injection)
+    1. [Example without DI](#example-without-di)
+    2. [Example with DI (Constructor Injection)](#example-with-di-constructor-injection)
+    3. [Example with DI (Method Injection)](#example-with-di-method-injection)
+5. [Bean Scoping](#bean-scoping)
+    1. [Example of Application Scope](#example-of-application-scope)
+6. [Special Spring Environment](#special-spring-environment)
+    1. [Example of Environment](#example-of-environment)
+    2. [Example of Profile](#example-of-profile)
+7. [@Value Annotation](#value-annotation)
+    1. [Example of use](#example-of-use)
+8. [Best Practices](#best-practices)
+    1. [Split Configuration](#split-configuration)
+9. [Spring Initialzr](#spring-initialzr)
+10. [Spring Boot](#spring-boot)
+    1. [Why Spring Boot?](#why-spring-boot)
+
+
+
 # What is Spring Framework?
 
 The Spring Framework is lightweight open source project for building enterprise Java Apps. Aims to simplify complexities that come with an enterprise Java apps.
@@ -200,6 +231,17 @@ public class AppConfig{
 ![Spring Initialzr](images/SpringInitialzr.png)
 
 
+## Spring Boot
+* Spring boot is an approach to develop Spring based apps with very less or no configurations. 
+* Spring boot provides a set of starter
 
-
+### Why Spring Boot?
+<ol>
+<li>Standalone Apps</li>
+<li>Embedded Server(Such as Tomcat or Jetty)</li>
+<li>Starters</li>
+<li>Auto Configuration</li>
+<li>Production Ready Feature</li>
+<li>No Xml configuration</li>
+</ol>
 

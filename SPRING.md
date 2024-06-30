@@ -41,7 +41,10 @@ An Spring Bean is an object managed(life cycle, org. dependecies) by the Spring 
 ```
 
 <p>@Component marks a class as an Spring Component. As a general component annotation indicates that the class should be initialized, configured and managed by the core container</p>
-<p>@Repository, @Service and @Controller as meta-annotation for @Component that allows re-fine components</p>
+<p>@Repository annotates classes at the persistence layer, will act as a database repository</p>
+<p>@Service annotates classes to indicate that they are holding business logic.</p>
+<p>@Controller annotates classic controllers and its typically use with @RequestMapping. Is a specialization of the @Component</p>
+<p>@RestController is equivalent than a class with @Controller and @ResponseBody annotation. Every request handling method of the controller class automatically serializes return objects into HttpResponse.</p>
 <p>Constructor-dependency injection is automatically done using @Autowired, by injecting the constructor paramenter/s</p>
 <p>@Autowired on Constructior is optional if there is only one constructor</p>
 
@@ -116,3 +119,87 @@ Example with DI (Method Injection)
 	
 	}
 ```
+
+### Special Spring Enviroment
+
+* <p>Enviroment: We can consider each stage of the app (development/testing/etc) as an enviroment. In each stage we need a specific enviroment to work with.</p>
+	<p>Sometimes we need to disable some functionalities/infraestructure of the app such as logging, etc. To make this happend we can group bean definitions based on the profile name (Using @Profile("name") / we can also do this coding by the use of AnnotationConfigApplicationContext / in the application.properties).</p>
+
+![Enviroment Spring](images/EnviromentSpring.png)
+
+Example of Enviroment
+``` java
+@Configuration
+public class AplicationConfig{
+	@Autowired
+	final Enviroment enviroment;
+	@Bean
+	public PaymentService paymentService(){
+		var profile = Profiles.of("cloud");
+		var isOkay = this.enviroment.acceptsProfiles(profile);
+		this.enviroment.getProperty("data.driver");
+		return ...
+	}
+}
+```
+Example of Profile
+``` java
+@Service
+@Profile("cloud")
+public class DefaultPaymentService implements PaymentService{}
+```
+
+### @Value Annotation
+
+This annotation is commonly used to inject values into a variable, no matter the type.
+
+Example of use
+``` java
+@Configuration
+@PropertySource("classpath:database.properties") //Our source for @Value
+public class ApplicationConfig{
+	@Value("${jdbc.url}")
+	private String url;
+	@Value("${jdbc.username}")
+	private String username;
+	@Bean
+	public DataSource dataSource(){
+		return ...;
+	}
+}
+```
+
+## Best Practices
+
+### Split Configuration
+
+Example
+``` java
+@Configuration
+public class ServiceConfig{
+	@Bean
+	public PaymentService paymentService(){return new ...}
+}
+
+@Configuration
+public class RepositoryConfig{
+	@Bean
+	public AccountRepository accountRepository(){return new ...}
+}
+
+@Configuration
+@Import({ServiceConfig.class, RepositoryConfig.class})
+public class AppConfig{
+	@Bean
+	public DataSource dataSource(){ ... }
+}
+```
+
+### Spring Initialzr
+
+![Spring Initialzr](images/SpringInitialzr.png)
+
+
+
+
+

@@ -14,7 +14,7 @@ The Spring Framework is lightweight open source project for building enterprise 
 
 ## What is an Spring Bean?
 
-An Spring Bean is an object managed(life cycle, org. dependecies) by the Spring Framework. Spring beans could be configure using xml, Java annotations or Java code.
+An Spring Bean is an object managed (life cycle, org. dependecies) by the Spring Framework. Spring beans could be configured using xml, Java annotations or Java code.
 "In Spring, the objects that form the backbone of your application and that are managed by the Spring IoC container are called beans. A bean is an object that is instantiated, assembled, and otherwise managed by a Spring IoC container."
 
 <p>@Qualifier let us tell Spring which bean to inject. If we don't use it, we may have ambiguity problems with the beans</p>

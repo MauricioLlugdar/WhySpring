@@ -11,20 +11,13 @@
 2. [What is a Spring Bean?](#what-is-a-spring-bean)
 3. [Annotations](#annotations)
 4. [Dependency Injection](#dependency-injection)
-    1. [Example without DI](#example-without-di)
-    2. [Example with DI (Constructor Injection)](#example-with-di-constructor-injection)
-    3. [Example with DI (Method Injection)](#example-with-di-method-injection)
 5. [Bean Scoping](#bean-scoping)
-    1. [Example of Application Scope](#example-of-application-scope)
 6. [Special Spring Environment](#special-spring-environment)
-    1. [Example of Environment](#example-of-environment)
-    2. [Example of Profile](#example-of-profile)
 7. [@Value Annotation](#value-annotation)
-    1. [Example of use](#example-of-use)
 8. [Best Practices](#best-practices)
     1. [Split Configuration](#split-configuration)
-9. [Spring Initialzr](#spring-initialzr)
-10. [Spring Boot](#spring-boot)
+	2. [Spring Initialzr](#spring-initialzr)
+9. [Spring Boot](#spring-boot)
     1. [Why Spring Boot?](#why-spring-boot)
 
 
@@ -43,7 +36,7 @@ The Spring Framework is lightweight open source project for building enterprise 
 
 * MVC: Allow us to easy create projects with the MVC pattern.
 
-## What is an Spring Bean?
+## What is a Spring Bean?
 
 An Spring Bean is an object managed (life cycle, org. dependecies) by the Spring Framework. Spring beans could be configured using xml, Java annotations or Java code.
 "In Spring, the objects that form the backbone of your application and that are managed by the Spring IoC container are called beans. A bean is an object that is instantiated, assembled, and otherwise managed by a Spring IoC container."
@@ -80,7 +73,7 @@ An Spring Bean is an object managed (life cycle, org. dependecies) by the Spring
 <p>@Autowired on Constructior is optional if there is only one constructor</p>
 
 
-### Dependecy Injection(Pattern to implement IoC)
+### Dependency Injection
 
 Spring Framework provides 4 ways to inject Beans
 
@@ -151,24 +144,24 @@ Example with DI (Method Injection)
 	}
 ```
 
-### Special Spring Enviroment
+### Special Spring Environment
 
-* <p>Enviroment: We can consider each stage of the app (development/testing/etc) as an enviroment. In each stage we need a specific enviroment to work with.</p>
+* <p>Environment: We can consider each stage of the app (development/testing/etc) as an environment. In each stage we need a specific environment to work with.</p>
 	<p>Sometimes we need to disable some functionalities/infraestructure of the app such as logging, etc. To make this happend we can group bean definitions based on the profile name (Using @Profile("name") / we can also do this coding by the use of AnnotationConfigApplicationContext / in the application.properties).</p>
 
-![Enviroment Spring](images/EnviromentSpring.png)
+![Environment Spring](images/EnvironmentSpring.png)
 
-Example of Enviroment
+Example of Environment
 ``` java
 @Configuration
 public class AplicationConfig{
 	@Autowired
-	final Enviroment enviroment;
+	final Environment environment;
 	@Bean
 	public PaymentService paymentService(){
 		var profile = Profiles.of("cloud");
-		var isOkay = this.enviroment.acceptsProfiles(profile);
-		this.enviroment.getProperty("data.driver");
+		var isOkay = this.environment.acceptsProfiles(profile);
+		this.environment.getProperty("data.driver");
 		return ...
 	}
 }

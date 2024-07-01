@@ -41,7 +41,7 @@ The Spring Framework is lightweight open source project for building enterprise 
 An Spring Bean is an object managed (life cycle, org. dependecies) by the Spring Framework. Spring beans could be configured using xml, Java annotations or Java code.
 "In Spring, the objects that form the backbone of your application and that are managed by the Spring IoC container are called beans. A bean is an object that is instantiated, assembled, and otherwise managed by a Spring IoC container."
 
-<p>@Qualifier let us tell Spring which bean to inject. If we don't use it, we may have ambiguity problems with the beans</p>
+<p>@Qualifier lets us tell Spring which bean to inject. If we don't use it, we may have ambiguity problems with the beans</p>
 <p>Nevertheless we can use the @Primary annotation to disambiguate and set 1 bean as a primary bean</p>
 
 <a href=https://www.baeldung.com/spring-bean>@Bean and @Qualifier</a>
@@ -56,12 +56,12 @@ An Spring Bean is an object managed (life cycle, org. dependecies) by the Spring
     @Configuration
     class VehicleFactoryConfig {
     	
-		@Bean
+	@Bean
     	Engine engine() {
         	return new Engine();
     	}
 	
-	}
+    }
 ```
 
 <p>@Component marks a class as an Spring Component. As a general component annotation indicates that the class should be initialized, configured and managed by the core container</p>
@@ -78,7 +78,7 @@ An Spring Bean is an object managed (life cycle, org. dependecies) by the Spring
 Spring Framework provides 4 ways to inject Beans
 
 * Constructor: During bean construction
-* Field(Not recommended, only for test)
+* Field (Not recommended, only for test)
 * Configuration: Configuration Methods
 * Setter: Setter Methods Injection
 
@@ -87,19 +87,19 @@ Example without DI
 	public class Store {
 		private Item item;
  
-    	public Store() {
-    	    item = new ItemImpl1();    
-    	}
+	    	public Store() {
+	    	    item = new ItemImpl1();    
+	    	}
 	}
 ```
 Example with DI (Constructor Injection)
 ``` java
 	public class Store {
-    	private Item item;
-
-    	public Store(Item item) { // We dont know the object implementation
-        	this.item = item;
-    	}
+	    	private Item item;
+	
+	    	public Store(Item item) { // We dont know the object implementation
+	        	this.item = item;
+	    	}
 	}
 ``` 
 Example with DI (Method Injection)
@@ -124,10 +124,10 @@ Example with DI (Method Injection)
 
 	<ol>
 		<li>SINGLETON: This is the default scope, the Spring Container only creates 1 instance and all requests for that bean name will return the same object. Any modifications to this object will be reflected in all references to the bean</li>
-		<li>PROTOTYPE: A bean with prototype scope will return a different instance every time is called. It is defined by setting the value prototype to the @Scope("prototype") annotation</li>
+		<li>PROTOTYPE: A bean with prototype scope will return a different instance every time it is called. It is defined by setting the value prototype to the @Scope("prototype") annotation</li>
 		<li>REQUEST: The bean is created for each HTTP request</li>
 		<li>SESSION: The bean is created for each HTTP session</li>
-		<li>APPLICATION: Is similar to the Singleton scope. In this case, the same instance of the bean is shared across multiple servlet-based applications running in the same ServletContext, while singleton scoped beans are scoped to a single application context only.</li>
+		<li>APPLICATION: It is similar to the Singleton scope. In this case, the same instance of the bean is shared across multiple servlet-based applications running in the same ServletContext, while singleton scoped beans are scoped to a single application context only.</li>
 		<li>WEBSOCKET: Similar to Singleton scope but limited to a WebSocket session only</li>
 	</ol>
 
@@ -138,7 +138,7 @@ Example with DI (Method Injection)
 	public HelloMessageGenerator(){
 		
 		applicationScopedBean() {
-		return new HelloMessageGenerato();
+			return new HelloMessageGenerator();
 		}
 	
 	}
@@ -147,7 +147,7 @@ Example with DI (Method Injection)
 ### Special Spring Environment
 
 * <p>Environment: We can consider each stage of the app (development/testing/etc) as an environment. In each stage we need a specific environment to work with.</p>
-	<p>Sometimes we need to disable some functionalities/infraestructure of the app such as logging, etc. To make this happend we can group bean definitions based on the profile name (Using @Profile("name") / we can also do this coding by the use of AnnotationConfigApplicationContext / in the application.properties).</p>
+	<p>Sometimes we need to disable some functionalities/infrastructure of the app such as logging, etc. To make this happen, we can group bean definitions based on the profile name (Using @Profile("name") / we can also do this coding with the use of AnnotationConfigApplicationContext / in the application.properties).</p>
 
 ![Environment Spring](images/EnvironmentSpring.png)
 
@@ -225,13 +225,13 @@ public class AppConfig{
 
 
 ## Spring Boot
-* Spring boot is an approach to develop Spring based apps with very less or no configurations. 
+* Spring boot is an approach to develop Spring based apps with very little to no configurations. 
 * Spring boot provides a set of starter
 
 ### Why Spring Boot?
 <ol>
 <li>Standalone Apps</li>
-<li>Embedded Server(Such as Tomcat or Jetty)</li>
+<li>Embedded Server (Such as Tomcat or Jetty)</li>
 <li>Starters</li>
 <li>Auto Configuration</li>
 <li>Production Ready Feature</li>
